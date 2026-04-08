@@ -1,0 +1,11 @@
+name = "cf-stock-worker-mvp"
+main = "src/index.js"
+compatibility_date = "2026-04-08"
+
+[[kv_namespaces]]
+binding = "PORTFOLIO_KV"
+id = "請填入正式KV_ID"
+preview_id = "請填入預覽KV_ID"
+
+[assets]
+directory = "./public"
