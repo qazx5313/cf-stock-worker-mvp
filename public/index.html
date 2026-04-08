@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloudflare Worker 台股 API 測試頁</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.6; }
+    input, button { padding: 8px 10px; font-size: 16px; }
+    pre { background: #f4f4f4; padding: 12px; border-radius: 8px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Cloudflare Worker 台股 API 測試頁</h1>
+  <p>輸入台股代號，例如 2330</p>
+  <input id="stockId" value="2330" />
+  <button id="btn">查詢</button>
+  <pre id="result">尚未查詢</pre>
+
+  <script>
+    document.getElementById('btn').addEventListener('click', async () => {
+      const stockId = document.getElementById('stockId').value.trim()
+      const res = await fetch(`/api/tw/quote/${stockId}`)
+      const data = await res.json()
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2)
+    })
+  </script>
+</body>
+</html>
